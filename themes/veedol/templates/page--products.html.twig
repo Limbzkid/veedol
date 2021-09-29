@@ -1,0 +1,81 @@
+  <section class="product-details-section bg-light">
+    <div class="container container-narrow">
+      <div class="row">
+        <div class="col-md-12">
+          <ul class="breadcrumb">
+            {{ drupal_block('product_breadcrumb', wrapper=false) }}
+
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="img-wrapper">
+            {% if node.field_image.target_id %}
+              <img src="{{ file_url(node.field_image.entity.uri.value) }}" alt="{{ node.field_image.alt }}" title="{{ node.field_image.title }}" >
+            {% else %}
+              <img src="/{{ directory }}/images/product_image.png" alt="veedol" title="veedol" >
+            {% endif %}
+          </div>
+        </div>
+        <div class="col-lg-6">
+        <div class="product-details">
+          <div class="heading-wrapper">
+            <h1 class="page-heading">{{ node.title.value | upper }}</h1>
+          </div>
+
+          {% if node.field_application.0.value %}
+            <h3 class="sub-section-heading">
+              <i class="icon-product icon-product-application"></i>
+              Application
+            </h3>
+            <ul>
+              {% for application in node.field_application %}
+                <li>{{ application.value | raw }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+
+          {% if node.field_available_in.0.entity.name.value %}
+            <hr>
+            <h3 class="sub-section-heading">
+              <i class="icon-product icon-product-size"></i>
+              Available In
+            </h3>
+            <ul class="action-list">
+              {% for item in node.field_available_in %}
+                <li><button class="btn btn-primary btn-sm">{{ item.entity.name.value }}</button></li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+
+          {% if node.field_specifications.0.value %}
+            <hr>
+            <h3 class="sub-section-heading">
+              <i class="icon-product icon-product-specs"></i>
+              Specifications
+            </h3>
+            <ul>
+              {% for item in node.field_specifications %}
+                <li>{{ item.value | raw }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+
+
+          {% if node.field_pdf_upload.target_id %}
+            <hr>
+            <h3 class="sub-section-heading">
+              <i class="icon-product icon-product-pdf"></i>
+              <span>Download Product Data Sheet</span>
+              <div class="actions-wrapper">
+                <a href="{{ file_url(node.field_pdf_upload.entity.uri.value) }}" target="_blank" class="btn btn-primary btn-sm">Download</a>
+              </div>
+            </h3>
+          {% endif %}
+
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>

@@ -1,0 +1,4 @@
+services:
+  custom_blocks.taxonomy_term_tree:
+    class: Drupal\custom_blocks\Service\TaxonomyTermTree
+    arguments: ['@entity_type.manager']

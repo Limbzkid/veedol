@@ -1,0 +1,239 @@
+{% if node.field__banner.target_id %}
+  <section class="page-banner">
+    {% for image in node.field__banner %}
+
+        <img class="w-100 d-none d-md-block" src="{{ file_url(image.entity.field_image.entity.uri.value) }}" title="{{ image.entity.field_image.title }}" alt="{{ image.entity.field_image.alt }}"/>
+        <img class="w-100 d-md-none" src="{{ file_url(image.entity.field_mobile_image.entity.uri.value) }}" title="{{ image.entity.field_image.title }}" alt="{{ image.entity.field_image.alt }}"/>
+
+    {% endfor %}
+  </section>
+{% endif %}
+
+<section class="content-wrapper overlap-header bg-white">
+  <div class="row">
+    <div class="col-12">
+      {{ page.highlighted }}
+    </div>
+    <div class="col-lg-9">
+      <div class="heading-wrapper">
+
+        <h1 class="page-heading">{{ node.title.value }}</h1>
+        {{ node.body.value | raw }}
+      </div>
+      <div class="icon-text-box-wrapper">
+        {% for csr in node.field_csr_section %}
+          {% set class = csr.entity.field_title.value|trim|replace({'& ': '', '/': ' '}) %}
+          <div class="icon-text-box">
+            <img src="{{ file_url(csr.entity.field_icon.entity.uri.value) }}" alt="{{ csr.entity.field_icon.alt }}" class="icon">
+            <a href="#{{ class|replace(' ', '-')|lower }}" class="title">{{ csr.entity.field_title.value }}</a>
+            <i class="iconx-arrow-thin"></i>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="col-lg-3">
+      <div class="mt-5 bg-light p-4">
+        <div class="icon-text-box mb-0">
+          <img src="{{ file_url(node.field_upload_icon.entity.uri.value) }}" class="icon">
+          <div class="text-group">
+            <span class="title">Corporate Social Responsibility Policy</span>
+            <a class="btn btn-link underline" href="{{ file_url(node.field_pdf_upload.entity.uri.value) }}" target="_blank">Download</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% set class = node.field_csr_section.0.entity.field_title.value|trim|replace({'& ': '', '/': ' '}) %}
+<section id="{{ class|replace(' ', '-')|lower }}" class="bg-light">
+  <div class="content-wrapper">
+    <div class="content-box content-box-icon-out">
+      <div class="content-box-inner">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="sub-section-heading">
+              <img src="{{ file_url(node.field_csr_section.0.entity.field_icon.entity.uri.value) }}" alt="" class="icon">
+              <h2 class="heading">{{ node.field_csr_section.0.entity.field_title.value }}</h2>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="sub-section-heading mx-0">
+              <h2 class="heading sm">{{ node.field_csr_section.0.entity.field_sub_heading.value }}</h2>
+            </div>
+
+            <div class="gallery popup-gallery">
+              {% for image in node.field_csr_section.0.entity.field_images %}
+                <a class="gallery-item" href="{{ file_url(image.entity.uri.value) }}" target="_blank">
+                    <img src="{{ file_url(image.entity.uri.value) }}" alt="">
+                </a>
+              {% endfor %}
+            </div>
+            {{ node.field_csr_section.0.entity.field_content.value | raw}}
+          </div>
+        </div>
+
+        <div class="bg-white p-3 p-lg-5 mb-5">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="sub-section-heading mx-0">
+                <img src="{{ file_url(node.field_csr_section.0.entity.field_csr_block.0.entity.field_icon.entity.uri.value) }}" class="icon">
+                <h2 class="heading sm">{{ node.field_csr_section.0.entity.field_csr_block.0.entity.field_title.value }}</h2>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            {{ node.field_csr_section.0.entity.field_csr_block.0.entity.field_content.value | raw}}
+          </div>
+        </div>
+
+        <div class="bg-white p-3 p-lg-5">
+          <div class="content-box-icon-out">
+            <div class="content-box-inner">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="sub-section-heading">
+                    <img src="{{ file_url(node.field_csr_section.0.entity.field_csr_block.1.entity.field_icon.entity.uri.value) }}" class="icon">
+                    <h2 class="heading sm">{{ node.field_csr_section.0.entity.field_csr_block.1.entity.field_title.value }}</h2>
+                  </div>
+                  {{ node.field_csr_section.0.entity.field_csr_block.1.entity.field_content.value | raw}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% set class = node.field_csr_section.1.entity.field_title.value|replace({'& ': '', '/': ' '}) %}
+<section id="{{ class|replace(' ', '-')|lower }}" class="bg-white">
+  <div class="content-wrapper">
+    <div class="content-box-icon-out">
+      <div class="content-box-inner">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="sub-section-heading mb-0">
+              <img src="{{ file_url(node.field_csr_section.1.entity.field_icon.entity.uri.value) }}" class="icon">
+              <h2 class="heading">{{ node.field_csr_section.1.entity.field_title.value }}</h2>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="gallery popup-gallery">
+              {% for image in node.field_csr_section.1.entity.field_images %}
+                <a class="gallery-item" href="{{ file_url(image.entity.uri.value) }}" target="_blank">
+                  <img src="{{ file_url(image.entity.uri.value) }}" alt="{{ image.alt }}">
+                </a>
+              {% endfor %}
+            </div>
+            {{ node.field_csr_section.1.entity.field_content.value | raw}}
+          </div>
+        </div>
+        <div class="bg-light p-3 p-lg-5 mb-5">
+          <div class="row">
+            {{ node.field_csr_section.1.entity.field_csr_block.0.entity.field_content.value | raw }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% set class = node.field_csr_section.2.entity.field_title.value|replace({'& ': '', '/': ' '}) %}
+<section id="{{ class|replace(' ', '-')|lower }}" class="bg-light">
+  <div class="content-wrapper">
+    <div class="content-box-icon-out">
+      <div class="content-box-inner">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="sub-section-heading">
+              <img src="{{ file_url(node.field_csr_section.1.entity.field_icon.entity.uri.value) }}" class="icon">
+              <h2 class="heading">{{ node.field_csr_section.2.entity.field_title.value }}</h2>
+            </div>
+            {{ node.field_csr_section.2.entity.field_content.value | raw}}
+
+            <div class="inner-group">
+              <div class="sub-section-heading mx-0">
+                <img src="{{ file_url(node.field_csr_section.2.entity.field_csr_block.0.entity.field_icon.entity.uri.value) }}" class="icon">
+                <h2 class="heading sm">{{ node.field_csr_section.2.entity.field_csr_block.0.entity.field_title.value }}</h2>
+              </div>
+
+              <div class="gallery popup-gallery">
+                {% for image in node.field_csr_section.2.entity.field_csr_block.0.entity.field_images %}
+                  <a class="gallery-item" href="{{ file_url(image.entity.uri.value) }}" target="_blank">
+                    <img src="{{ file_url(image.entity.uri.value) }}" alt="{{ image.entity.alt }}" title="{{ image.entity.title }}">
+                  </a>
+                {% endfor %}
+              </div>
+
+              {{ node.field_csr_section.2.entity.field_csr_block.0.entity.field_content.value | raw }}
+            </div>
+
+            <div class="inner-group">
+              <div class="sub-section-heading mx-0">
+                <img src="{{ file_url(node.field_csr_section.2.entity.field_csr_block.1.entity.field_icon.entity.uri.value) }}" class="icon">
+                <h2 class="heading sm">{{ node.field_csr_section.2.entity.field_csr_block.1.entity.field_title.value }}</h2>
+              </div>
+              {{ node.field_csr_section.2.entity.field_csr_block.1.entity.field_content.value | raw }}
+
+            </div>
+
+            <div class="inner-group">
+              <div class="sub-section-heading mx-0">
+                <img src="{{ file_url(node.field_csr_section.2.entity.field_csr_block.2.entity.field_icon.entity.uri.value) }}" alt="" class="icon">
+                <h2 class="heading sm">{{ node.field_csr_section.2.entity.field_csr_block.2.entity.field_title.value }}</h2>
+              </div>
+
+              <div class="gallery popup-gallery">
+                {% for image in node.field_csr_section.2.entity.field_csr_block.2.entity.field_images %}
+                  <a class="gallery-item" href="{{ file_url(image.entity.uri.value) }}" target="_blank">
+                    <img src="{{ file_url(image.entity.uri.value) }}" alt="{{ image.entity.alt }}" title="{{ image.entity.title }}">
+                  </a>
+                {% endfor %}
+              </div>
+                {{ node.field_csr_section.2.entity.field_csr_block.2.entity.field_content.value | raw }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% set class = node.field_csr_section.3.entity.field_title.value|replace({'& ': '', '/': ' '}) %}
+<section id="{{ class|replace(' ', '-')|lower }}" class="bg-light">
+  <div class="content-wrapper">
+    <div class="content-box content-box-icon-out">
+      <div class="content-box-inner">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="sub-section-heading">
+              <img src="{{ file_url(node.field_csr_section.3.entity.field_icon.entity.uri.value) }}" alt="" class="icon">
+              <h2 class="heading">{{ node.field_csr_section.3.entity.field_title.value }}</h2>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="sub-section-heading mx-0">
+              <h2 class="heading sm">{{ node.field_csr_section.3.entity.field_sub_heading.value }}</h2>
+            </div>
+
+            <div class="gallery popup-gallery">
+              {% for image in node.field_csr_section.3.entity.field_images %}
+                <a class="gallery-item" href="{{ file_url(image.entity.uri.value) }}" target="_blank">
+                    <img src="{{ file_url(image.entity.uri.value) }}" alt="">
+                </a>
+              {% endfor %}
+            </div>
+            {{ node.field_csr_section.3.entity.field_content.value | raw}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

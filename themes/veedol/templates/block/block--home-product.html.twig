@@ -1,0 +1,22 @@
+<div class="swiper-container">
+  <div class="heading-wrapper no-underline">
+    <h2 class="heading">Product Categories</h2>
+    <div class="swiper-pagination"></div>
+  </div>
+  <div class="swiper-wrapper">
+    {% for category in elements['#data_obj'] %}
+      <div class="swiper-slide">
+        <div class="img-wrapper">
+          <img class="w-100" src="{{ category.image }}" />
+        </div>
+        <div class="details">
+          <h3 class="title">{{ category.name }}</h3>
+          <a href="{{ category.link }}" class="btn btn-outline btn-white">Explore</a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <div class="swiper-button-next">
+    <i class="iconx-arrow"></i>
+  </div>
+</div>

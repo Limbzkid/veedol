@@ -1,0 +1,26 @@
+<section class="page-banner">
+  {% for image in node.field__banner %}
+    <img class="w-100 d-none d-md-block" src="{{ file_url(image.entity.field_image.entity.uri.value) }}" title="{{ image.entity.field_image.title }}" alt="{{ image.entity.field_image.alt }}"/>
+    <img class="w-100 d-md-none" src="{{ file_url(image.entity.field_mobile_image.entity.uri.value) }}" title="{{ image.entity.field_image.title }}" alt="{{ image.entity.field_image.alt }}"/>
+  {% endfor %}
+  <div class="heading-wrapper over-image">
+    <h1 class="page-heading">{{ node.title.value }}</h1>
+  </div>
+</section>
+
+
+<section class="content-wrapper overlap-header pt-0">
+  <div class="investor-corner">
+    {% for item in node.field_block %}
+      <a href="{{ item.entity.field_link_url.value }}">
+        <div class="icon-wrapper">
+            <img src="{{ file_url(item.entity.field_icon.entity.uri.value) }}" alt="icon" title="icon" />
+        </div>
+        <h2 class="title">{{ item.entity.field_title.value }}</h2>
+      </a>
+    {% endfor %}
+  </div>
+  {% if node.field_link_text.value %}
+    <p> <marquee width="100%" direction="left">{{ node.field_link_text.value }}</marquee></p>
+  {% endif %}
+</section>

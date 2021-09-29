@@ -1,0 +1,25 @@
+{% for snippet in content['#data_obj'] %}
+  <div class="info-box has-image" id="{{ snippet.id }}">
+    <div class="has-padding info-box-image">
+        <img src="{{ snippet.image }}" alt="{{ snippet.img_alt }}" title="{{ snippet.img_title }}">
+    </div>
+    <div class="info-box-content">
+        <div class="sub-section-heading">
+            <h2 class="heading">{{ snippet.title }}</h2>
+        </div>
+        {{ snippet.desc | raw }}
+
+        {% if snippet.info is not empty %}
+          <p  class="mb-4">Includes:</p>
+          <ul>
+            {% for item in snippet.info %}
+              <li>{{ item }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+        {% if snippet.link %}
+          <p class="d-inline-block mt-3">{{ snippet.link_text }}<a href="{{ snippet.link }}"> click here</a></p>
+        {% endif %}
+    </div>
+  </div>
+{% endfor %}

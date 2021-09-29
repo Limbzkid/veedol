@@ -1,0 +1,60 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_personnel
+    - node.type.board_of_directors
+    - paragraphs.paragraphs_type.personnel
+  module:
+    - entity_reference_revisions
+id: node.board_of_directors.field_personnel
+field_name: field_personnel
+entity_type: node
+bundle: board_of_directors
+label: Personnel
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      personnel: personnel
+    target_bundles_drag_drop:
+      about_section:
+        weight: 12
+        enabled: false
+      basic:
+        weight: 13
+        enabled: false
+      career:
+        weight: 14
+        enabled: false
+      contact:
+        weight: 15
+        enabled: false
+      contact_block:
+        weight: 16
+        enabled: false
+      csr:
+        weight: 17
+        enabled: false
+      csr_block:
+        weight: 18
+        enabled: false
+      csr_sections:
+        weight: 19
+        enabled: false
+      home_tabs:
+        weight: 20
+        enabled: false
+      image:
+        weight: 21
+        enabled: false
+      personnel:
+        enabled: true
+        weight: 22
+field_type: entity_reference_revisions

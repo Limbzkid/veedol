@@ -1,0 +1,100 @@
+<!-- Page banner -->
+{% if node.field_banner.target_id %}
+  <section class="page-banner">
+    {% for image in node.field_banner %}
+      <div class="swiper-slide">
+          <img class="w-100 d-none d-md-block" src="{{ file_url(image.entity.field_image.entity.uri.value) }}" title="{{ image.entity.field_image.title }}" alt="{{ image.entity.field_image.alt }}"/>
+          <img class="w-100 d-md-none" src="{{ file_url(image.entity.field_mobile_image.entity.uri.value) }}" title="{{ image.entity.field_image.title }}" alt="{{ image.entity.field_image.alt }}"/>
+      </div>
+    {% endfor %}
+  </section>
+{% else %}
+  <section class="page-banner">
+    <div class="container container-narrow">
+      <div class="heading-wrapper">
+        <h1 class="page-heading">How can we help?</h1>
+        <h2 class="page-sub-heading">Send us a message!</h2>
+      </div>
+    </div>
+  </section>
+{% endif %}
+
+<!-- /Page banner -->
+
+<section class="bg-multi">
+  <div class="content-wrapper">
+    <div class="row">
+      <div class="col-lg-6 pe-md-5">
+        <div class="heading-wrapper">
+          <ul class="d-lg-none breadcrumb justify-content-end">
+            <li><div class="title"><a href="/">Home</a></div></li>
+            <li><span class="current">Contact Us</span></li>
+          </ul>
+          <h2 class="page-heading">{{ node.title.value }}</h2>
+          {{ node.body.value | raw }}
+        </div>
+
+        <div class="form-wrapper">
+          {{ drupal_block('contact-us')  }}
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="row">
+          <div class="d-none d-lg-block">
+            {{ page.highlighted }}
+          </div>
+          {% for addr in node.field_contact_details %}
+            <div class="col-md-6 contact-info-wrapper">
+              <div class="contact-info-inner">
+                <div class="heading-wrapper sm">
+                  <h3 class="page-heading">{{ addr.entity.field_title.value }}</h3>
+                </div>
+                {{ addr.entity.field_content.value | raw }}
+                <ul class="contact-box no-bullets">
+                  {% if addr.entity.field_phone.value %}
+                    <li><i class="icon-contact icon-contact-phone"></i><b>Ph:</b>{{ addr.entity.field_phone.value}} </li>
+                  {% endif %}
+                  {% if addr.entity.field_fax.value %}
+                    <li><i class="icon-contact icon-contact-fax"></i><b>Fax:</b>{{ addr.entity.field_fax.value}} </li>
+                  {% endif %}
+                  {% if addr.entity.field_email.value %}
+                    <li><i class="icon-contact icon-contact-email"></i><b>Email:</b>{{ addr.entity.field_email.value}} </li>
+                  {% endif %}
+                </ul>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% set cnt = 1 %}
+
+<section class="content-wrapper">
+  <div class="row category-box-wrapper">
+    {% for item in node.field_blocks %}
+      {% if cnt == 3 %}
+        <div class="col-md-4">
+      {% else %}
+        <div class="col-md-4 mb-4 mb-md-0">
+      {% endif %}
+        <div class="category-box image-show">
+          {% if cnt == 2 %}
+            <div class="details bg-light">
+          {% else %}
+            <div class="details bg-primary">
+          {% endif %}
+            <div class="icon">
+              <img src="{{ file_url(item.entity.field_icon.entity.uri.value) }}" alt="icon" title="icon">
+            </div>
+            <a href="{{ item.entity.field_link_url.value }}" class="title">{{ item.entity.field_title.value }}</a>
+          </div>
+        </div>
+      </div>
+      {% set cnt = cnt + 1 %}
+    {% endfor %}
+  </div>
+</section>

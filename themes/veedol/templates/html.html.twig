@@ -1,0 +1,167 @@
+{#
+/**
+ * @file
+ * Theme override for the basic structure of a single Drupal page.
+ *
+ * Variables:
+ * - logged_in: A flag indicating if user is logged in.
+ * - root_path: The root path of the current page (e.g., node, admin, user).
+ * - node_type: The content type for the current node, if the page is a node.
+ * - head_title: List of text elements that make up the head_title variable.
+ *   May contain one or more of the following:
+ *   - title: The title of the page.
+ *   - name: The name of the site.
+ *   - slogan: The slogan of the site.
+ * - page_top: Initial rendered markup. This should be printed before 'page'.
+ * - page: The rendered page markup.
+ * - page_bottom: Closing rendered markup. This variable should be printed after
+ *   'page'.
+ * - db_offline: A flag indicating if the database is offline.
+ * - placeholder_token: The token for generating head, css, js and js-bottom
+ *   placeholders.
+ *
+ * @see template_preprocess_html()
+ */
+#}
+
+{% set base_url = url('<front>') %}
+<!DOCTYPE html>
+<html{{ html_attributes }}>
+  <head>
+    <head-placeholder token="{{ placeholder_token|raw }}">
+    <title>{{ head_title|safe_join(' | ') }}</title>
+    <css-placeholder token="{{ placeholder_token|raw }}">
+    <js-placeholder token="{{ placeholder_token|raw }}">
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-M7ZJHW3ZT1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-M7ZJHW3ZT1');
+    </script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-205243054-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-205243054-1');
+    </script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-205243054-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-97573028-1');
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Veedol India",
+        "alternateName": "Veedol  India Official Website",
+        "url": "https://www.veedolindia.com",
+        "logo": "https://www.veedolindia.com/themes/veedol/images/logo.png",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "033-7125 7700",
+          "contactType": "customer service",
+          "contactOption": "HearingImpairedSupported",
+          "areaServed": "IN",
+          "availableLanguage": ["en","Hindi"]
+        },
+        "sameAs": [
+          "https://www.facebook.com/VeedolEngineOils/",
+          "https://www.instagram.com/veedolengineoils/",
+          "https://www.linkedin.com/company/veedol-engine-oils/"
+        ]
+      }
+    </script>
+
+
+  </head>
+  <body{{ attributes }}>
+    {{ page_top }}
+    <header id="site-header" role="navigation">
+      <div class="container">
+        <div class="header-inner">
+          <div class="center-menu-wrapper">
+            <a href="/" class="logo-wrapper">
+              <img class="w-100 d-none d-md-block" src="/{{ directory}}/images/logo.png" />
+              <img class="w-100 d-md-none" src="/{{ directory }}/images/logo-mobile.png" />
+            </a>
+
+            <form action="/search" method="POST">
+
+                <input type="text" name="search" placeholder="Search">
+
+              <input type="submit">
+
+            </form>
+
+            <div class="actions-wrapper">
+              {# {{ drupal_region('sidebar_second') }} #}
+
+
+              <button class="hamburger-trigger">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="visually-hidden">Open Menu</span>
+              </button>
+            </div>
+          </div>
+          {{ drupal_block('main_menu') }}
+        </div>
+      </div>
+    </header>
+
+    <main id="site-content" role="main">
+      {{ page }}
+      <ul class="floating-menu">
+        <li>
+          <div class="menu-item">
+            <i class="iconx-drop"></i>
+            <a href="/find-lubricant" class="title">Find Lubricant</a>
+          </div>
+        </li>
+        <li>
+          <div class="menu-item">
+            <i class="iconx-marker"></i>
+            <a href="/find-nearest-workshop" class="title">Find Nearest Workshop</a>
+          </div>
+        </li>
+        <li>
+          <div class="menu-item">
+            <i class="iconx-email"></i>
+            <div class="title">
+              <span class="has-sub-menu">Trade Enquiries</span>
+              <ul class="sub-menu">
+                {#<li><a href="/find-a-distributor">Find Distributor</a></li>#}
+                <li><a href="/contact-company">Contact Company</a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </main>
+
+    <footer id="site-footer" role="contentinfo">
+      <div class="footer-inner">
+        <div class="container">
+          {{ drupal_block('footer_menu') }}
+        </div>
+      </div>
+    </footer>
+    {{ page_bottom }}
+    <js-bottom-placeholder token="{{ placeholder_token|raw }}">
+  </body>
+</html>

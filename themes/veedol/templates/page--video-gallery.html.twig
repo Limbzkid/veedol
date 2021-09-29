@@ -1,0 +1,19 @@
+<section class="page-banner">
+  {% if node.field_banners.target_id %}
+    {% for image in node.field_banners %}
+      <img class="w-100 d-none d-md-block" src="{{ file_url(image.entity.field_image.entity.uri.value) }}" title="{{ image.entity.field_image.title }}" alt="{{ image.entity.field_image.alt }}"/>
+      <img class="w-100 d-md-none" src="{{ file_url(image.entity.field_mobile_image.entity.uri.value) }}" title="{{ image.entity.field_image.title }}" alt="{{ image.entity.field_image.alt }}"/>
+    {% endfor %}
+
+    <div class="heading-wrapper over-image">
+      {{ page.highlighted }}
+      <h1 class="page-heading">{{ node.title.value }}</h1>
+    </div>
+  {% endif %}
+</section>
+
+<section class="content-wrapper overlap-header pt-0">
+
+    {{ drupal_block('video_gallery') }}
+
+</section>

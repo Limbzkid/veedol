@@ -1,0 +1,41 @@
+<section class="bg-light">
+  <div class="content-wrapper px-0">
+    <div class="container container-narrow">
+      <div class="heading-wrapper">
+        {{ page.highlighted }}
+        <h1 class="page-heading">{{ node.title.value }}</h1>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          {{ node.body.value | raw }}
+          <div>
+          {% if node.field_multiple_file_upload.target_id %}
+            {% for item in  node.field_multiple_file_upload %}
+              <a href="{{ file_url(item.entity.uri.value) }}" target="_blank" class="btn btn-link">{{ item.description }}<i class="iconx-arrow-thin"></i></a>
+              <br>
+            {% endfor %}
+          {% endif %}
+          </div>
+        </div>
+
+        {% if node.field_block.0.entity.field_title.value %}
+          <div class="col-12">
+            <div class="accordion-container">
+              {% for item in node.field_block %}
+                <div class="accordion">
+                  <div class="accordion-head">
+                    <button>{{ item.entity.field_title.value }}</button>
+                  </div>
+                  <div class="accordion-body">
+                    <p>{{ item.entity.field_description.value | raw }}</p>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>

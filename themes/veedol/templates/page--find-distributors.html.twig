@@ -1,0 +1,42 @@
+
+<section class="bg-light">
+  <div class="content-wrapper px-0">
+    <div class="container container-narrow">
+      <div class="heading-wrapper">
+        {{ page.highlighted }}
+        <h1 class="page-heading">{{ node.title.value }}</h1>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          {{ node.body.value | raw }}
+        </div>
+        <div class="col-12">
+          {{ drupal_block('find_distributors') }}
+        </div>
+        <div class="col-12">
+          <div class="distributor-form-wrapper otp-gen">
+            <p class="text-center">To get your desired information, please enter your mobile number in the box below</p>
+            <form action="">
+              <label for="mobile" class="visually-hidden">Mobile Number</label>
+              <div class="compact-form-group">
+                <input type="text" name="mobile" id="mobile" placeholder="Enter 10 Digit Mobile Number" maxlength="10" class="form-control">
+              </div>
+              <input type="submit" name="submit" id="submit" value="Get OTP" class="btn btn-primary btn-outline sbmtOtp" />
+            </form>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="distributor-form-wrapper otp-verify d-none">
+
+          </div>
+        </div>
+        <div class="col-12">
+            <div class="info-box-list-wrapper">
+
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

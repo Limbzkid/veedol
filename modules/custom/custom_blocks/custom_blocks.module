@@ -1,0 +1,49 @@
+<?php
+
+use Drupal\Core\Form\FormStateInterface;
+use Symfony\Component\HttpFoundation\Request;
+
+/**
+ * @file custom_blocks.module
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function custom_blocks_theme($existing, $type, $theme, $path) {
+  return [
+      'contactFrm' => [
+        'render element' => 'form'
+      ],
+      'contactCompanyFrm' => [
+        'render element' => 'form'
+      ],
+  ];
+}
+
+
+/**
+ * Implements hook_form_alter().
+ */
+function custom_blocks_form_alter(array &$form, FormStateInterface $form_state, $form_id) {
+  if($form_id == 'contact_us' || $form_id == 'company-contact') {
+    $form['#attributes']['autocomplete'] = 'off';
+  }
+}
+
+/**
+* Implements hook_mail().
+*/
+function custom_blocks_mail($key, &$message, $params) {
+ $options = array(
+   'langcode' => $message['langcode'],
+ );
+
+ switch ($key) {
+   case 'create_article':
+     $message['from'] = \Drupal::config('system.site')->get('mail');
+     $message['subject'] = t('Article created: @title', array('@title' => $params['node_title']), $options);
+     $message['body'][] = $params['message'];
+     break;
+ }
+}

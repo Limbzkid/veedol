@@ -1,0 +1,102 @@
+
+<div class="hamburger-menu-wrapper">
+  <button class="hamburger-close">
+    <span class="visually-hidden">Close Menu</span>
+  </button>
+
+  <div class="main-menu-wrapper">
+    <ul>
+      {% for item in content['#data_obj'] %}
+        <li>
+          <a href="{{ item.link }}" {{ item.target }}>{{ item.title }}</a>
+          {% if item.child is not empty %}
+            <button class="btn btn-icon"><i class="iconx-arrow-thin"></i></button>
+            {% if item.title == 'Products' %}
+              <div class="mega-menu sub-menu">
+                <div class="container">
+                  <ul class="level-wrapper">
+                    {% for oldest in item.child %}
+                      {% if loop.index is odd %}
+                        <li class="level">
+                      {% else %}
+                        <li class="level multi-column">
+                      {% endif %}
+                        <a href="{{ oldest.alias }}">{{ oldest.name }}</a>
+                        {% if oldest.child is not empty %}
+                          <button class="btn btn-icon"><i class="iconx-arrow-thin"></i></button>
+                          <ul class="level-1 sub-menu">
+                            {% for middle in oldest.child %}
+                              <li>
+                                <a href="{{ middle.alias }}">{{ middle.name }}</a>
+                                {% if middle.child is not empty %}
+                                  <button class="btn btn-icon"><i class="iconx-arrow-thin"></i></button>
+                                  <ul class="level-2 sub-menu">
+                                    {% for youngest in middle.child %}
+                                      <li><a href="{{ youngest.alias }}">{{ youngest.name }}</a></li>
+                                    {% endfor %}
+                                  </ul>
+                                {% endif %}
+                              </li>
+                            {% endfor %}
+                          </ul>
+                        {% endif %}
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              </div>
+            {% else %}
+              {% if item.title == 'Investor Corner' %}
+                <div class="mega-menu sub-menu investor-menu">
+                  <div class="container">
+                    <ul class="level-wrapper">
+                      {% for oldest in item.child %}
+                          <li class="level">
+                          <a href="{{ oldest.link }}" {{ (oldest.target == 1) ? 'target="_blank"': '' }}>{{ oldest.title }}</a>
+                          {% if oldest.child is not empty %}
+                            <button class="btn btn-icon"><i class="iconx-arrow-thin"></i></button>
+                            <ul class="level-1 sub-menu">
+                              {% for middle in oldest.child %}
+                                <li>
+                                  <a href="{{ middle.link }}" {{ (middle.target == 1) ? 'target="_blank"': '' }}>{{ middle.title }}</a>
+                                  {% if middle.child is not empty %}
+                                    <button class="btn btn-icon"><i class="iconx-arrow-thin"></i></button>
+                                    <ul class="level-2 sub-menu">
+                                      {% for youngest in middle.child %}
+                                        <li><a href="{{ youngest.link }}" {{ (youngest.target == 1) ? 'target="_blank"': '' }}>{{ youngest.title }}</a></li>
+                                      {% endfor %}
+                                    </ul>
+                                  {% endif %}
+                                </li>
+                              {% endfor %}
+                            </ul>
+                          {% endif %}
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                </div>
+              {% else %}
+                <ul class="sub-menu sub-menu">
+                  {% for menu in item.child %}
+                    <li><a href="{{ menu.link }}">{{ menu.title }} </a></li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            {% endif %}
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="top-menu-wrapper">
+    <ul class="social-menu">
+      {{ drupal_block('social_media') }}
+    </ul>
+    <ul class="quick-menu">
+      {% for item in content['#top_menu'] %}
+        <li><a href="{{ item.link }}">{{ item.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>

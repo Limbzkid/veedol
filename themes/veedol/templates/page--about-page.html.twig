@@ -1,0 +1,85 @@
+{% if node.field_banner_image.target_id %}
+  <section class="page-banner">
+    {% for image in node.field_banner_image %}
+      <div class="swiper-slide">
+        {% if image.entity.field_mobile_image.target_id %}
+          <img class="w-100 d-none d-md-block" src="{{ file_url(image.entity.field_image.entity.uri.value) }}" title="{{ image.entity.field_image.title }}" alt="{{ image.entity.field_image.alt }}"/>
+          <img class="w-100 d-md-none" src="{{ file_url(image.entity.field_mobile_image.entity.uri.value) }}" title="{{ image.entity.field_image.title }}" alt="{{ image.entity.field_image.alt }}"/>
+        {% else %}
+          <img class="w-100" src="{{ file_url(image.entity.field_image.entity.uri.value) }}" title="{{ image.entity.field_image.title }}" alt="{{ image.entity.field_image.alt }}"/>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </section>
+{% endif %}
+
+<section class="content-wrapper overlap-header bg-white">
+  <div class="heading-wrapper">
+    {{ page.highlighted }}
+    <h1 class="page-heading">{{ node.title.value }}</h1>
+  </div>
+
+  <div class="row">
+    {% if node.title.value == 'Technology'%}
+      <div class="col-md-12">
+    {% else %}
+      <div class="col-md-9">
+    {% endif %}
+      {{ node.body.value | raw }}
+      {% if node.field_link_text is not empty %}
+        <div>
+          <a href="{{ node.field_link.value }}" class="btn btn-link">{{ node.field_link_text.value }} <i class="iconx-arrow-thin"></i></a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+
+  {% if node.field_section.0.entity.field_title.value is not empty %}
+    <div class="content-box-spaced bg-light content-box-icon-out">
+      <div class="content-box-inner">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="sub-section-heading">
+              <img src="{{ file_url(node.field_section.0.entity.field_mobile_image.entity.uri.value) }}" title="{{ node.field_section.0.entity.field_mobile_image.title }}" alt="{{ node.field_section.0.entity.field_mobile_image.alt }}" class="icon">
+              <h2 class="heading">{{ node.field_section.0.entity.field_title.value }}</h2>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          {{ node.field_section.0.entity.field_content.value | raw  }}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+</section>
+
+{% if node.field_section.1.entity is not empty %}
+  <section class="bg-light">
+    <div class="content-wrapper">
+      <div class="content-box-icon-out">
+        <div class="content-box-inner">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="sub-section-heading">
+                <img src="{{ file_url(node.field_section.1.entity.field_mobile_image.entity.uri.value) }}" title="{{ node.field_section.1.entity.field_mobile_image.title }}" alt="{{ node.field_section.1.entity.field_mobile_image.alt }}" class="icon">
+                <h2 class="heading">{{ node.field_section.1.entity.field_title.value }}</h2>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+          <div class="col-md-6 pb-4">
+            <img src="{{ file_url(node.field_section.1.entity.field_image.entity.uri.value) }}" title="{{ node.field_section.1.entity.field_image.title }}" alt="{{ node.field_section.1.entity.field_image.alt }}" class="mw-100">
+          </div>
+          <div class="col-md-6">
+            {{ node.field_section.1.entity.field_content.value | raw  }}
+            <div>
+              <a href="{{ node.field_section.1.entity.field_link_url.value }}" class="btn btn-link">Read More <i class="iconx-arrow-thin"></i></a>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endif %}

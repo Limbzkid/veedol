@@ -1,0 +1,4 @@
+{% for item in elements['#breadcrumb'] %}
+  <li><a href="{{ item.alias }}">{{ item.name }}</a></li>
+{% endfor %}
+<li><span class="current">{{ elements['#title'] }}</span></li>

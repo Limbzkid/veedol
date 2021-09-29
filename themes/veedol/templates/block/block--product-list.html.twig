@@ -1,0 +1,191 @@
+{% set count = 1 %}
+<div class="category-box-wrapper">
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      {% for cat in elements['#category'] %}
+        <div class="swiper-slide">
+          <div class="category-box {{ cat.class }}">
+            <div class="img-wrapper">
+              <img class="w-100" src="{{ cat.image }}" alt="{{ cat.alt }}" title="{{ cat.title }}" />
+            </div>
+            <div class="details">
+              <div class="icon">
+                <img src="{{ cat.icon }}" alt="{{ cat.icon_alt }}" title="{{ cat.icon_title }}">
+              </div>
+              <a href="{{ cat.alias }}" class="title">{{ cat.name }}</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-3">
+    <ul class="product-category-filter">
+      {% for menu in elements['#data_obj'] %}
+        <li class="{{ menu.class }}">
+        <div class="title">
+          <a href="{{ menu.alias }}">{{ menu.name }}</a>
+          <button class="btn btn-icon"><i class="iconx-arrow-thin"></i></button>
+        </div>
+        {% if menu.child is not empty %}
+          <ul>
+            {% for submenu in menu.child %}
+              <li class="{{ submenu.class }}">
+                <div class="title">
+                  <a href="{{ submenu.alias }}">{{ submenu.name }}</a>
+                  {% if submenu.child is not empty %}
+                    <button class="btn btn-icon"><i class="iconx-arrow-thin"></i></button>
+                  {% endif %}
+                </div>
+                {% if submenu.child is not empty %}
+                  <ul>
+                    {% for item in submenu.child %}
+                      <li class="{{ item.class }}">
+                        <div class="title">
+                          <a href="{{ item.alias }}">{{ item.name }}</a>
+                          {% if item.child is not empty %}
+                            <button class="btn btn-icon"><i class="iconx-arrow-thin"></i></button>
+                          {% endif %}
+                        </div>
+                        {% if item.child is not empty %}
+                          <ul>
+                            {% for lastchild in item.child %}
+                              <li class="{{ lastchild.class }}">
+                                <div class="title">
+                                  <a href="{{ lastchild.alias }}">{{ lastchild.name }}</a>
+                                </div>
+                              </li>
+                            {% endfor %}
+                          </ul>
+                        {% endif %}
+                      </li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+
+  {% if elements['#oem'] == 1 %}
+    <div class="col-xl-9 col-lg-8">
+      <ul class="breadcrumb">
+        {% for breadcrumb in elements['#breadcrumb'] %}
+          <li>
+            <div class="title">
+              <a href="{{ breadcrumb.alias }}">{{ breadcrumb.name }}</a>
+            </div>
+          </li>
+        {% endfor %}
+          <li><span class="current">{{ elements['#current'] }}</span></li>
+      </ul>
+      <div class="product-listing-wrapper row has-sub-sections">
+        <div class="col-12">
+          <h2 class="sub-section-heading">{{ elements['#products'][0]['name'] }}</h2>
+        </div>
+        <div class="col-12">
+          <h3 class="sub-section-heading sm">{{ elements['#products'][0]['title1'] }}</h3>
+          {{ elements['#products'][0]['desc_1'] | raw }}
+        </div>
+        {% for logo in elements['#tw_logos'] %}
+          <a href="javascript:;" class="product-box col-xl-4 col-lg-6 col-sm-12">
+            <div class="image-wrapper">
+              <img src="{{ logo.image }}" alt="{{ logo.alt }}" title="{{ logo.title }}">
+            </div>
+            <div class="details">{{ logo.title }}</div>
+          </a>
+        {% endfor %}
+
+        <hr>
+
+        <div class="col-12">
+          <h2 class="sub-section-heading sm">{{ elements['#products'][0]['title2'] }}</h2>
+          {{ elements['#products'][0]['desc_2'] | raw }}
+        </div>
+        {% for logo in elements['#en_logos'] %}
+          <a href="javascript:;" class="product-box col-xl-4 col-lg-6 col-sm-12">
+            <div class="image-wrapper">
+              <img src="{{ logo.image }}" alt="{{ logo.alt }}" title="{{ logo.title }}">
+            </div>
+            <div class="details">{{ logo.title }}</div>
+          </a>
+        {% endfor %}
+        <div class="col-12 disclaimer">
+          <p>*Logos belong to the respective companies</p>
+        </div>
+      </div>
+    </div>
+  {% elseif elements['#oem'] == 2 %}
+    <div class="col-xl-9 col-lg-8">
+      <ul class="breadcrumb">
+        {% for breadcrumb in elements['#breadcrumb'] %}
+          <li>
+            <div class="title">
+              <a href="{{ breadcrumb.alias }}">{{ breadcrumb.name }}</a>
+            </div>
+          </li>
+        {% endfor %}
+          <li><span class="current">{{ elements['#current'] }}</span></li>
+      </ul>
+      <div class="product-listing-wrapper industrial-oils-list row">
+        {% for key,val in elements['#products'] %}
+          <div class="col-12">
+            <h2 class="sub-section-heading">{{ key }}</h2>
+          </div>
+          {% for product in val %}
+            <div class="product-box col-md-4 col-sm-6 col-xs-12">
+              <div class="image-wrapper">
+                <img src="/{{ directory }}/images/product-oil.png">
+                <div class="actions">
+                  {% if product.file is not empty %}
+                    <a href="{{ product.file }}" target="_blank" class="btn btn-white btn-sm">Download PDF</a>
+                  {% endif %}
+                </div>
+              </div>
+              <div class="details">{{ product.name }}</div>
+            </div>
+          {% endfor %}
+        {% endfor %}
+      </div>
+    </div>
+  {% else %}
+    <div class="col-lg-9">
+      <ul class="breadcrumb">
+        {% for breadcrumb in elements['#breadcrumb'] %}
+          <li>
+            <div class="title">
+              <a href="{{ breadcrumb.alias }}">{{ breadcrumb.name }}</a>
+            </div>
+          </li>
+        {% endfor %}
+          <li><span class="current">{{ elements['#current'] }}</span></li>
+      </ul>
+      <div class="product-listing-wrapper row">
+
+        {% for key,val in elements['#products'] %}
+          <div class="col-12">
+            <h2 class="sub-section-heading">{{ key }}</h2>
+          </div>
+          {% for product in val %}
+            <div class="product-box col-md-4 col-sm-6 col-xs-12">
+              <div class="image-wrapper">
+                <img src="{{ product.image }}" alt="{{ product.alt }}" title="{{ product.title }}">
+                <div class="actions">
+                  <a href="{{ product.link }}" class="btn btn-white btn-sm">View Details</a>
+                </div>
+              </div>
+              <div class="details">{{ product.name }}</div>
+            </div>
+          {% endfor %}
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+</div>

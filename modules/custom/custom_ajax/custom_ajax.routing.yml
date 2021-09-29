@@ -1,0 +1,112 @@
+custom.get_states:
+  path: '/get-states'
+  defaults:
+    _title: 'Get States'
+    _controller: '\Drupal\custom_ajax\Controller\ajaxController::getStates'
+  requirements:
+    _access: 'TRUE'
+    _method: 'POST'
+custom.get_cities:
+  path: '/get-cities'
+  defaults:
+    _title: 'Get Cities'
+    _controller: '\Drupal\custom_ajax\Controller\ajaxController::getCities'
+  requirements:
+    _access: 'TRUE'
+    _method: 'POST'
+custom.get_otp:
+  path: '/get-otp'
+  defaults:
+    _title: 'Get OTP'
+    _controller: '\Drupal\custom_ajax\Controller\ajaxController::getOtp'
+  requirements:
+    _access: 'TRUE'
+    _method: 'POST'
+custom.verify_otp:
+  path: '/verify-otp'
+  defaults:
+    _title: 'Verify OTP'
+    _controller: '\Drupal\custom_ajax\Controller\ajaxController::verifyOtp'
+  requirements:
+    _access: 'TRUE'
+    _method: 'POST'
+custom.resend_otp:
+  path: '/resend-otp'
+  defaults:
+    _title: 'Resend OTP'
+    _controller: '\Drupal\custom_ajax\Controller\ajaxController::resendOtp'
+  requirements:
+    _access: 'TRUE'
+    _method: 'POST'
+custom.get_all_cities:
+  path: '/get-all-cities'
+  defaults:
+    _title: 'Get Cities'
+    _controller: '\Drupal\custom_ajax\Controller\ajaxController::getAllCities'
+  requirements:
+    _access: 'TRUE'
+    _method: 'POST'
+custom.get_data:
+  path: '/get-data'
+  defaults:
+    _title: 'Get Data'
+    _controller: '\Drupal\custom_ajax\Controller\ajaxController::getData'
+  requirements:
+    _access: 'TRUE'
+    _method: 'POST'
+custom.get_makes:
+  path: '/get-all-makes'
+  defaults:
+    _title: 'Get Make'
+    _controller: '\Drupal\custom_ajax\Controller\ajaxController::getMake'
+  requirements:
+    _access: 'TRUE'
+    _method: 'POST'
+custom.get_models:
+  path: '/get-all-models'
+  defaults:
+    _title: 'Get Model'
+    _controller: '\Drupal\custom_ajax\Controller\ajaxController::getModel'
+  requirements:
+    _access: 'TRUE'
+    _method: 'POST'
+custom.get_lube:
+  path: '/get-lube'
+  defaults:
+    _title: 'Get Lubricant'
+    _controller: '\Drupal\custom_ajax\Controller\ajaxController::getLube'
+  requirements:
+    _access: 'TRUE'
+    _method: 'POST'
+custom.get_financial_result:
+  path: '/get-financial-result'
+  defaults:
+    _title: 'Get Financial Result'
+    _controller: '\Drupal\custom_ajax\Controller\ajaxController::getFinancialResult'
+  requirements:
+    _access: 'TRUE'
+    _method: 'POST'
+custom.get_financial_result_company:
+  path: '/get-financial-result-company'
+  defaults:
+    _title: 'Get Financial Result Company'
+    _controller: '\Drupal\custom_ajax\Controller\ajaxController::getFinancialResultCompany'
+  requirements:
+    _access: 'TRUE'
+    _method: 'POST'
+custom.set_page_id:
+  path: '/set-page-id'
+  defaults:
+    _title: 'Set Page ID'
+    _controller: '\Drupal\custom_ajax\Controller\ajaxController::setPageId'
+  requirements:
+    _access: 'TRUE'
+    _method: 'POST'
+custom.get_page_id:
+  path: '/get-page-id'
+  defaults:
+    _title: 'Get page ID'
+    _controller: '\Drupal\custom_ajax\Controller\ajaxController::getPageId'
+  requirements:
+    _access: 'TRUE'
+    _method: 'POST'

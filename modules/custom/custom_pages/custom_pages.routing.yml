@@ -1,0 +1,49 @@
+custom_pages.admin_page:
+  path: '/admin/veedol'
+  defaults:
+    _controller: '\Drupal\custom_pages\Controller\customPagesController::admin_page'
+    _title: 'Veedol'
+  requirements:
+    _permission: 'access administration pages'
+custom_pages.locator_import:
+  path: '/admin/import/distributors-import'
+  defaults:
+    _title: 'Distributors Import'
+    _form: '\Drupal\custom_pages\Form\distributortorImportFrm'
+  requirements:
+    _permission: 'access administration pages'
+custom_pages.contact_form_listing:
+  path: '/admin/veedol/contact-form-listing'
+  defaults:
+    _title: 'Contact Form Listing'
+    _controller: '\Drupal\custom_pages\Controller\customPagesController::contact_form_listing'
+  requirements:
+    _permission: 'access administration pages'
+custom_pages.download:
+  path: '/admin/veedol/contact-form-listing/download'
+  defaults:
+    _title: 'Download'
+    _controller: '\Drupal\custom_pages\Controller\customPagesController::contact_download'
+  requirements:
+    _permission: 'access administration pages'
+custom_pages.company_form_listing:
+  path: '/admin/veedol/contact-company-form-listing'
+  defaults:
+    _title: 'Contact Company Form Listing'
+    _controller: '\Drupal\custom_pages\Controller\customPagesController::contactCompany_form_listing'
+  requirements:
+    _permission: 'access administration pages'
+custom_pages.company_download:
+  path: '/admin/veedol/contact-company-form-listing/company-download'
+  defaults:
+    _title: 'Download'
+    _controller: '\Drupal\custom_pages\Controller\customPagesController::contactCompany_download'
+  requirements:
+    _permission: 'access administration pages'
+custom_pages.search:
+  path: '/search'
+  defaults:
+    _title: 'Search'
+    _controller: '\Drupal\custom_pages\Controller\customPagesController::search'
+  requirements:
+    _permission: 'access administration pages'

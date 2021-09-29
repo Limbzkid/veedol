@@ -1,0 +1,19 @@
+<section class="bg-light">
+  <div class="content-wrapper px-0">
+    <div class="container container-narrow">
+      <div class="heading-wrapper">
+        {{ page.highlighted }}
+        <h1 class="page-heading">{{ node.title.value }}</h1>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          {{ node.body.value | raw }}
+        </div>
+      </div>
+
+        {{ drupal_block('contact-company') }}
+
+    </div>
+  </div>
+</section>

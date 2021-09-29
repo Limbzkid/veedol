@@ -1,0 +1,72 @@
+<section class="page-banner">
+  <img class="w-100" src="{{ file_url(node.field_banner.entity.field_image.entity.uri.value) }}" />
+</section>
+
+<section class="bg-light global-presence-wrapper">
+  <div class="content-wrapper overlap-header bg-light">
+    <div class="heading-wrapper">
+      <ul class="breadcrumb justify-content-end">
+        <li>
+          <div class="title"><a href="/">Home</a></div>
+        </li>
+        <li><span class="current">Global Presence</span></li>
+      </ul>
+      <h1 class="page-heading">{{ node.title.value }}</h1>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="sub-section-heading text-uppercase">Europe</div>
+          <ul>
+            {% for item in node.field_regions %}
+              {% if item.entity.field_select_region.entity.name.value | lower == 'europe' %}
+                <li>{{ item.entity.field_title.value }}</li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        <div class="sub-section-heading text-uppercase">Americas</div>
+          <ul>
+            {% for item in node.field_regions %}
+              {% if item.entity.field_select_region.entity.name.value | lower == 'americas' %}
+                <li>{{ item.entity.field_title.value }}</li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        <div class="sub-section-heading text-uppercase">Middle East & Africa</div>
+          <ul>
+            {% for item in node.field_regions %}
+              {% if item.entity.field_select_region.entity.name.value | lower == 'middle east & africa' %}
+                <li>{{ item.entity.field_title.value }}</li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        <div class="sub-section-heading text-uppercase">Asia Pacific & South Asia</div>
+          <ul>
+            {% for item in node.field_regions %}
+              {% if item.entity.field_select_region.entity.name.value | lower == 'asia pacific & south asia' %}
+                <li>{{ item.entity.field_title.value }}</li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+      </div>
+      <div class="col-md-6 mb-5">
+        <img class="w-100" src="{{ file_url(node.field_image.entity.uri.value) }}" alt="map" ttle="map">
+      </div>
+    </div>
+    <div class="product-listing-wrapper row has-sub-sections">
+      <div class="col-12">
+        <h2 class="sub-section-heading text-uppercase mb-4">Veedol engine oils are approved by key OEMs for Europe. They include:</h2>
+      </div>
+      {% for item in node.field_key_oems.entity.field_images %}
+      <a href="#" class="product-box col-xl-3 col-lg-6 col-sm-12">
+        <div class="image-wrapper">
+          <img src="{{ file_url(item.entity.uri.value) }}">
+        </div>
+        <div class="details">{{ item.title }}</div>
+      </a>
+      {% endfor %}
+      <div class="col-12 disclaimer">
+        <p>*Logos belong to the respective companies</p>
+      </div>
+    </div>
+  </div>
+</section>

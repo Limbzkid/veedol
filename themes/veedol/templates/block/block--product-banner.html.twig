@@ -1,0 +1,4 @@
+{% for banner in elements['#data_obj'] %}
+  <img class="w-100 d-none d-md-block" src="{{ banner.image }}" alt="{{ banner.alt }}" title="{{ banner.title }}" />
+  <img class="w-100 d-md-none" src="{{ banner.mobile }}" alt="{{ banner.alt }}" title="{{ banner.title }}" />
+{% endfor %}

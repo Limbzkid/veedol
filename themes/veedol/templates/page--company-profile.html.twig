@@ -1,0 +1,48 @@
+{% if node.field_banner_image.target_id %}
+  <section class="page-banner">
+    {% for image in node.field_banner_image %}
+      <div class="swiper-slide">
+          <img class="w-100 d-none d-md-block" src="{{ file_url(image.entity.field_image.entity.uri.value) }}" title="{{ image.entity.field_image.title }}" alt="{{ image.entity.field_image.alt }}"/>
+          <img class="w-100 d-md-none" src="{{ file_url(image.entity.field_mobile_image.entity.uri.value) }}" title="{{ image.entity.field_image.title }}" alt="{{ image.entity.field_image.alt }}"/>
+      </div>
+    {% endfor %}
+  </section>
+{% endif %}
+
+<section class="content-wrapper overlap-header bg-white">
+  <div class="heading-wrapper">
+    {{ page.highlighted }}
+    <h1 class="page-heading">{{ node.title.value }}</h1>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      {{ node.body.value | raw }}
+    </div>
+    <div class="col-md-5">
+        <img class="w-100" src="{{ file_url(node.field_section.0.entity.field_image.entity.uri.value) }}" title="{{ node.field_section.0.entity.field_image.title }}" alt="{{ node.field_section.0.entity.field_image.alt }}">
+    </div>
+    {{ node.field_section.0.entity.field_content.value | raw }}
+  </div>
+
+  <div class="content-box-spaced bg-light content-box-icon-out mt-3">
+    <div class="content-box-inner">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="sub-section-heading">
+            <img src="{{ file_url(node.field_section.1.entity.field_mobile_image.entity.uri.value) }}" title="{{ node.field_section.1.entity.field_mobile_image.title }}" alt="{{ node.field_section.1.entity.field_mobile_image.alt }}" class="icon">
+            <h2 class="heading">{{ node.field_section.1.entity.field_title.value }}</h2>
+          </div>
+          {{ node.field_section.1.entity.field_content.value | raw }}
+        </div>
+        <div class="col-md-12">
+          <div class="sub-section-heading">
+            <img src="{{ file_url(node.field_section.2.entity.field_mobile_image.entity.uri.value) }}" title="{{ node.field_section.2.entity.field_mobile_image.title }}" alt="{{ node.field_section.2.entity.field_mobile_image.alt }}" class="icon">
+            <h2 class="heading">{{ node.field_section.2.entity.field_title.value }}</h2>
+          </div>
+          {{ node.field_section.2.entity.field_content.value | raw }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,76 @@
+<div class="row">
+  <div class="col-md-6">
+    <div class="form-group">
+      {{ form.name }}
+      <div class="nameErr error"></div>
+      <label for="name" class="control-label visually-hidden">Name</label>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="form-group">
+      {{ form.email }}
+      <div class="mailErr  error"></div>
+      <label for="email" class="control-label visually-hidden">E-mail Id</label>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="form-group">
+      {{ form.mobile }}
+      <div class="mobErr error"></div>
+      <label for="mobile" class="control-label visually-hidden">Mobile Number</label>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="form-group">
+      {{ form.company }}
+      <div class="compErr error"></div>
+      <label for="company_name" class="control-label visually-hidden">Company Name</label>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="form-group">
+      {{ form.state }}
+      <div class="stateErr error"></div>
+      <label for="state" class="control-label visually-hidden">State</label>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="form-group">
+      {{ form.city }}
+      <div class="cityErr error"></div>
+      <label for="city" class="control-label visually-hidden">City</label>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="form-group">
+      {{ form.pincode }}
+      <div class="pinErr error"></div>
+      <label for="pincode" class="control-label visually-hidden">Pincode</label>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="form-group">
+      {{ form.address }}
+      <div class="addrErr error"></div>
+      <label for="address" class="control-label visually-hidden">Address</label>
+    </div>
+  </div>
+</div>
+<div class="row row-up">
+  <div class="col-md-6">
+    <div class="form-group">
+      {{ form.enquiry_details }}
+      <div class="enqErr error"></div>
+      <label for="enquiry_details" class="control-label visually-hidden">Enquiry Details</label>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="form-group mb-0 mb-md-4">
+      {{ form.submit }}
+    </div>
+  </div>
+</div>
+
+{{ form.form_id }}
+{{ form.form_build_id }}
+{{ form.form_token }}

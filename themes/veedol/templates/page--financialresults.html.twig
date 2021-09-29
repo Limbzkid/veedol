@@ -1,0 +1,13 @@
+<section class="bg-light">
+  <div class="content-wrapper px-0">
+    <div class="container container-narrow">
+      <div class="heading-wrapper">
+        {{ page.highlighted }}
+        <h1 class="page-heading">{{ node.title.value }}</h1>
+      </div>
+      <div class="row investors" id="fr-{{ node.nid.value }}">
+        {{ drupal_block('financial_results') }}
+      </div>
+    </div>
+  </div>
+</section>

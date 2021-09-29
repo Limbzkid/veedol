@@ -1,0 +1,14 @@
+name: 'Code of Conduct'
+description: 'Provides Code of Conduct content type and related configuration. '
+type: module
+core_version_requirement: '^8.9 || ^9'
+dependencies:
+  - entity_reference_revisions
+  - field
+  - field_group
+  - menu_ui
+  - node
+  - paragraphs
+  - path
+  - text
+  - user

@@ -1,0 +1,41 @@
+{% if node.field_banners.target_id %}
+  <section class="page-banner">
+    {% for image in node.field_banners %}
+        {% if image.entity.field_mobile_image.target_id %}
+          <img class="w-100 d-none d-md-block" src="{{ file_url(image.entity.field_image.entity.uri.value) }}" title="{{ image.entity.field_image.title }}" alt="{{ image.entity.field_image.alt }}"/>
+          <img class="w-100 d-md-none" src="{{ file_url(image.entity.field_mobile_image.entity.uri.value) }}" title="{{ image.entity.field_image.title }}" alt="{{ image.entity.field_image.alt }}"/>
+        {% else %}
+          <img class="w-100" src="{{ file_url(image.entity.field_image.entity.uri.value) }}" title="{{ image.entity.field_image.title }}" alt="{{ image.entity.field_image.alt }}"/>
+        {% endif %}
+    {% endfor %}
+  </section>
+{% endif %}
+
+
+<section class="content-wrapper overlap-header bg-white">
+  <div class="heading-wrapper">
+    {{ page.highlighted }}
+    <h1 class="page-heading">{{ node.title.value }}</h1>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      {{ node.body.value | raw }}
+    </div>
+
+    <div class="col-md-12">
+      <div class="sub-section-heading">
+        <img src="{{ file_url(node.field_upload_icon.entity.uri.value) }}" class="icon">
+        <h2 class="heading">{{ node.field_heading.value }}</h2>
+      </div>
+      <ul class="job-listing-wrapper no-bullets">
+        {% for item in node.field_openings %}
+          <li>
+            <div class="title">{{ item.entity.field_pdf.description }}</div>
+            <a href="{{ file_url(item.entity.field_pdf.entity.uri.value) }}" class="btn btn-icon" target="_blank"><i class="iconx-pdf"></i> <span class="visually-hidden">Apply Now</span></a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>

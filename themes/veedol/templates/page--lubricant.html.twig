@@ -1,0 +1,24 @@
+<section class="bg-light">
+  <div class="content-wrapper px-0">
+    <div class="container container-narrow">
+      <div class="heading-wrapper">
+        {{ page.highlighted }}
+        <h1 class="page-heading">{{ node.title.value }}</h1>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          {{ node.body.value | raw }}
+        </div>
+        <div class="col-12">
+          {{ drupal_block('find_lubricant') }}
+        </div>
+        <div class="col-12">
+          <div class="lubricant-list-wrapper">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

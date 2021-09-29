@@ -1,0 +1,29 @@
+<section class="bg-light tabs-container tab-style-2">
+  <div class="content-wrapper px-0">
+    <div class="container container-narrow">
+      <div class="heading-wrapper">
+        {{ page.highlighted }}
+        <h1 class="page-heading">{{ node.title.value }}</h1>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <ul class="nav nav-tabs">
+            <li><a href="#tab1" class="active" data-toggle="tab"><span>North</span></a></li>
+            <li><a href="#tab2" data-toggle="tab"><span>East</span></a></li>
+            <li><a href="#tab3" data-toggle="tab"><span>West</span></a></li>
+            <li><a href="#tab4" data-toggle="tab"><span>South</span></a></li>
+          </ul>
+        </div>
+
+
+
+        <div class="col-12">
+          <div class="tab-content">
+            {{ drupal_block('plant_locator') }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

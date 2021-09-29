@@ -1,0 +1,56 @@
+<section class="bg-light">
+  <div class="content-wrapper px-0">
+    <div class="container container-narrow">
+      <div class="row">
+        <div class="col-12">
+          <div class="heading-wrapper">
+            {{ page.highlighted }}
+            <h1 class="page-heading">{{ node.title.value }}</h1>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="board-of-directors-list">
+            {% for item in node.field_personnel %}
+              {% if item.entity.field_key_executive.value == 0 %}
+                <div class="member-box">
+                  <div class="member-box-inner">
+                    {#<img src="/themes/veedol/images/icon-user.png" alt="icon" class="icon">#}
+                    <div class="name">{{ item.entity.field_title.value }}</div>
+                    <div class="designation">{{ item.entity.field_sub_heading.value }}</div>
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <div class="heading-wrapper no-underline mb-0">
+            <h2 class="page-heading">Key Executives</h2>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="board-of-directors-list">
+            {% for item in node.field_personnel %}
+              {% if item.entity.field_key_executive.value == 1 %}
+                <div class="member-box">
+                  <div class="member-box-inner">
+                    {#<img src="/themes/veedol/images/icon-user.png" alt="icon" class="icon">#}
+                    <div class="name">{{ item.entity.field_title.value }}</div>
+                    <div class="designation">{{ item.entity.field_sub_heading.value }}</div>
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

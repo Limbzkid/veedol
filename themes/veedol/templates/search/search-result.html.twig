@@ -1,0 +1,7 @@
+{% if '/node/' not in url %}
+  <div class="search-result">
+    <h2 class="heading">{{ title }}</h2>
+    <p>{{ snippet }}</p>
+    <a href="{{ url }}" class="btn btn-primary btn-sm">Read More</a>
+  </div>
+{% endif %}

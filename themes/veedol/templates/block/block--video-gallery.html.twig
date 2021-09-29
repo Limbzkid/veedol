@@ -1,0 +1,12 @@
+<div class="video-gallery">
+  {% for item in content['#data_obj'] %}
+    <div class="video-box" id="{{ item.id }}">
+      <a href="https://www.youtube.com/watch?v={{ item.video_id }}" class="video-popup">
+        <div class="img-wrapper">
+          <img class="w-100" src="{{ item.image }}" alt="{{ item.img_alt }}" title="{{ item.img_title }}" />
+        </div>
+        <span class="title">{{ item.title | raw }}</span></span>
+      </a>
+    </div>
+  {% endfor %}
+</div>

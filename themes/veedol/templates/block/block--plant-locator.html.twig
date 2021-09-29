@@ -1,0 +1,144 @@
+<div class="tab-pane active" id="tab1">
+  <h4 class="tab-title">
+    <a data-toggle="collapse" data-parent=".tab-pane" href="#collapse-1" >
+      <span>North</span>
+    </a>
+  </h4>
+  <div id="collapse-1" class="tab-body show">
+    <div class="info-box-list-wrapper m-0">
+      {% for plant in content['#data_obj']['North'] %}
+        <div class="info-box has-image">
+          <div class="info-box-image">
+            <img src="{{ plant.image }}" alt="{{ plant.img_alt }}" title="{{ plant.img_title }}">
+          </div>
+          <div class="info-box-inner">
+            <div class="sub-section-heading">
+              <img src="/themes/veedol/images/icon-company.png" alt="icon" class="icon">
+              <h2 class="heading">{{ plant.title }}</h2>
+            </div>
+            <ul class="info-wrapper no-bullets">
+              <li>
+                <i class="icon-contact icon-contact-address"></i>
+                <label>Address</label>
+                <div>{{ plant.address | raw }}</div>
+              </li>
+              <li>
+                <i class="icon-contact icon-contact-phone"></i>
+                <label>Office No</label>
+                <div>{{ plant.contact }} </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<div class="tab-pane" id="tab2">
+  <h4 class="tab-title">
+    <a data-toggle="collapse" data-parent=".tab-pane" href="#collapse-2" >
+      <span>East</span>
+    </a>
+  </h4>
+  <div id="collapse-2" class="tab-body">
+    <div class="info-box-list-wrapper m-0">
+      {% for plant in content['#data_obj']['East'] %}
+        <div class="info-box has-image">
+          <div class="info-box-image">
+            <img src="{{ plant.image }}" alt="{{ plant.img_alt }}" title="{{ plant.img_title }}">
+          </div>
+          <div class="info-box-inner">
+            <div class="sub-section-heading">
+              <img src="/themes/veedol/images/icon-company.png" alt="icon" class="icon">
+              <h2 class="heading">{{ plant.title }}</h2>
+            </div>
+            <ul class="info-wrapper no-bullets">
+              <li>
+                <i class="icon-contact icon-contact-address"></i>
+                <label>Address</label>
+                <div>{{ plant.address | raw }}</div>
+              </li>
+              <li>
+                <i class="icon-contact icon-contact-phone"></i>
+                <label>Office No</label>
+                <div>{{ plant.contact }} </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<div class="tab-pane" id="tab3">
+  <h4 class="tab-title">
+    <a data-toggle="collapse" data-parent=".tab-pane" href="#collapse-3" >
+      <span>West</span>
+    </a>
+  </h4>
+  <div id="collapse-3" class="tab-body">
+    <div class="info-box-list-wrapper m-0">
+      {% for plant in content['#data_obj']['West'] %}
+        <div class="info-box has-image">
+          <div class="info-box-image">
+            <img src="{{ plant.image }}" alt="{{ plant.img_alt }}" title="{{ plant.img_title }}">
+          </div>
+          <div class="info-box-inner">
+            <div class="sub-section-heading">
+              <img src="/themes/veedol/images/icon-company.png" alt="icon" class="icon">
+              <h2 class="heading">{{ plant.title }}</h2>
+            </div>
+            <ul class="info-wrapper no-bullets">
+              <li>
+                <i class="icon-contact icon-contact-address"></i>
+                <label>Address</label>
+                <div>{{ plant.address | raw }}</div>
+              </li>
+              <li>
+                <i class="icon-contact icon-contact-phone"></i>
+                <label>Office No</label>
+                <div>{{ plant.contact }} </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<div class="tab-pane" id="tab4">
+  <h4 class="tab-title">
+    <a data-toggle="collapse" data-parent=".tab-pane" href="#collapse-4" >
+      <span>South</span>
+    </a>
+  </h4>
+  <div id="collapse-4" class="tab-body">
+    <div class="info-box-list-wrapper m-0">
+      {% for plant in content['#data_obj']['South'] %}
+        <div class="info-box has-image">
+          <div class="info-box-image">
+            <img src="{{ plant.image }}" alt="{{ plant.img_alt }}" title="{{ plant.img_title }}">
+          </div>
+          <div class="info-box-inner">
+            <div class="sub-section-heading">
+              <img src="/themes/veedol/images/icon-company.png" alt="icon" class="icon">
+              <h2 class="heading">{{ plant.title }}</h2>
+            </div>
+            <ul class="info-wrapper no-bullets">
+              <li>
+                <i class="icon-contact icon-contact-address"></i>
+                <label>Address</label>
+                <div>{{ plant.address | raw }}</div>
+              </li>
+              <li>
+                <i class="icon-contact icon-contact-phone"></i>
+                <label>Office No</label>
+                <div>{{ plant.contact }} </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>

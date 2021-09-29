@@ -1,0 +1,18 @@
+<div id="collapse-1" class="tab-body show">
+  <div class="block-slider swiper-container">
+    <div class="swiper-wrapper">
+      {% for item in content['#data_obj'] %}
+        <div class="swiper-slide">
+          <a href="javascript:;">
+            <div class="img-wrapper " >
+              <img class="w-100" src="{{ item.image }}" alt="{{ item.img_alt }}" title="{{ item.img_title }}"/>
+            </div>
+            <span class="title">{{ item.title | raw }}</span></span>
+          </a>
+          <a href="/about-us/snippets" class="btn btn-link read-more scroll-page" id="{{ item.id }}">Read More</a>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+</div>

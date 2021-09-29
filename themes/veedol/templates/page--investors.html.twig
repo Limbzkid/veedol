@@ -1,0 +1,17 @@
+<section class="content-wrapper overlap-header bg-white">
+  <div class="heading-wrapper">
+    {{ page.highlighted }}
+    <h1 class="page-heading">{{ node.title.value }}</h1>
+  </div>
+
+  <div class="row">
+    <div class="col-md-9">
+      {{ node.body.value | raw }}
+      <div>
+        {% if node.field_pdf_upload.target_id %}
+          <a href="{{ file_url(node.field_pdf_upload.entity.uri.value) }}" target="_blank" class="btn btn-link">Read More <i class="iconx-arrow-thin"></i></a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>

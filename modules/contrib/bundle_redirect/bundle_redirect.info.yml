@@ -1,0 +1,13 @@
+name: Bundle Redirect
+type: module
+description: Module allows to set a redirect from a node itself
+core: 8.x
+core_version_requirement: ^8 || ^9
+package: Other
+dependencies:
+  - redirect:redirect
+
+# Information added by Drupal.org packaging script on 2020-04-21
+version: '8.x-1.3'
+project: 'bundle_redirect'
+datestamp: 1587457643

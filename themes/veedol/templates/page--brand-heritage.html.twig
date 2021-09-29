@@ -1,0 +1,33 @@
+{% if node.field_banners.target_id %}
+  <section class="page-banner">
+    {% for image in node.field_banners %}
+        {% if image.entity.field_mobile_image.target_id %}
+          <img class="w-100 d-none d-md-block" src="{{ file_url(image.entity.field_image.entity.uri.value) }}" title="{{ image.entity.field_image.title }}" alt="{{ image.entity.field_image.alt }}"/>
+          <img class="w-100 d-md-none" src="{{ file_url(image.entity.field_mobile_image.entity.uri.value) }}" title="{{ image.entity.field_image.title }}" alt="{{ image.entity.field_image.alt }}"/>
+        {% else %}
+          <img class="w-100" src="{{ file_url(image.entity.field_image.entity.uri.value) }}" title="{{ image.entity.field_image.title }}" alt="{{ image.entity.field_image.alt }}"/>
+        {% endif %}
+    {% endfor %}
+  </section>
+{% endif %}
+<section>
+  <div class="content-wrapper overlap-header bg-white">
+    <div class="container container-narrow">
+      <div class="heading-wrapper">
+        {{ page.highlighted }}
+        <h2 class="page-heading">{{ node.title.value }}</h2>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          {{ node.body.value | raw }}
+        </div>
+        <div class="col-12">
+          <div class="milestones-wrapper">
+            {{ drupal_block('barnd_heritage') }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
